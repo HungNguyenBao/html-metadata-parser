@@ -7,7 +7,8 @@ interface Meta {
     image?: string
     url?: string,
     type?: string,
-    site_name?: string
+    site_name?: string,
+    card?: string
 }
 
 
@@ -47,7 +48,7 @@ const parse = async (url: string, config?: AxiosRequestConfig) => {
             if (val) meta[s] = val;
         });
 
-        ['og:title', 'og:description', 'og:image', 'og:url', 'og:site_name', 'og:type'].forEach(s => {
+        ['og:title', 'og:description', 'og:image', 'og:url', 'og:site_name', 'og:type', 'twitter:card'].forEach(s => {
             const val = readMT(el, s);
             if (val) og[s.split(':')[1]] = val;
         });
