@@ -7,6 +7,7 @@ interface Meta {
     type?: string;
     site_name?: string;
     card?: string;
+    logo?: string;
 }
 declare const parse: (url: string, config?: AxiosRequestConfig) => Promise<{
     meta?: undefined;
