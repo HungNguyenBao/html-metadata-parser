@@ -18,7 +18,11 @@ const readMT = (el: HTMLElement, name: string) => {
 };
 
 const getSize = (el) => {
-  return (el.sizes[0] && parseInt(el.sizes[0], 10)) || 0;
+  return (
+    (el?.getAttribute("sizes")?.split("x")?.[0] &&
+      parseInt(el?.getAttribute("sizes")?.split("x")?.[0], 10)) ||
+    0
+  );
 };
 
 const parse = async (url: string, config?: AxiosRequestConfig) => {
@@ -41,11 +45,11 @@ const parse = async (url: string, config?: AxiosRequestConfig) => {
 
   const metas = $.querySelectorAll("meta");
 
-  const icons: any = [...$.querySelectorAll('link[rel*="icon"]')].sort(
+  const icons = [...$.querySelectorAll('link[rel*="icon"]')].sort(
     (a, b) => getSize(b) - getSize(a)
   );
 
-  const icon = icons?.[0]?.href;
+  const icon = icons?.[0]?.getAttribute("href");
 
   for (let i = 0; i < metas.length; i++) {
     const el = metas[i];
