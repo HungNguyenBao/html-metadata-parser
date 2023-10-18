@@ -49,7 +49,12 @@ const parse = async (url: string, config?: AxiosRequestConfig) => {
     (a, b) => getSize(b) - getSize(a)
   );
 
-  const icon = icons?.[0]?.getAttribute("href");
+  let icon = icons?.[0]?.getAttribute("href");
+
+  if (!icon.includes("http")) {
+    const urlObj = new URL(url);
+    icon = `${urlObj.origin}${icon}`;
+  }
 
   for (let i = 0; i < metas.length; i++) {
     const el = metas[i];
