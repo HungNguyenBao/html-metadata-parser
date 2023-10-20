@@ -51,7 +51,7 @@ const parse = async (url: string, config?: AxiosRequestConfig) => {
 
   let icon = icons?.[0]?.getAttribute("href");
 
-  if (!icon.includes("http")) {
+  if (icon && !icon.includes("http")) {
     const urlObj = new URL(url);
     icon = `${urlObj.origin}${icon}`;
   }
