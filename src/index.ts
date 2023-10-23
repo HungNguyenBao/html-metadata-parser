@@ -46,7 +46,7 @@ const parse = async (url: string, config?: AxiosRequestConfig) => {
   const metas = $.querySelectorAll("meta");
 
   const icons = [...$.querySelectorAll('link[rel*="icon"]')].sort(
-    (a, b) => getSize(b) - getSize(a)
+    (a, b) => getSize(a) - getSize(b)
   );
 
   let icon = icons?.[0]?.getAttribute("href");
